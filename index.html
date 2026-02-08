@@ -1,0 +1,108 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Automoviles B.J | Vehículos de segunda mano</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="brand" aria-label="Marca">
+        <div class="brand__logo" aria-hidden="true">BJ</div>
+        <div class="brand__text">
+          <div class="brand__name">Automoviles B.J</div>
+          <div class="brand__tag">Compra y venta de vehículos de ocasión</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navegación">
+        <a href="#destacados">Destacados</a>
+        <a href="#coches">Coches</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO (PORTADA con carrusel de fondos) -->
+  <section class="hero" aria-label="Portada">
+    <div class="hero__bg" id="heroBg"></div>
+    <div class="hero__overlay"></div>
+
+    <div class="container hero__content">
+      <div class="hero__badge">Vehículos revisados · Entrega rápida · Contacto por WhatsApp</div>
+      <h1>Financiamos tu vehículo, sin complicaciones</h1>
+      <p>Mira los coches disponibles y contáctanos,tambien hacemos pedidos de cualquier marca y tipo de vehiculo</p>
+
+      <div class="hero__controls">
+        <button class="icon-btn" id="heroPrev" aria-label="Anterior">‹</button>
+        <div class="dots" id="heroDots" aria-label="Indicadores"></div>
+        <button class="icon-btn" id="heroNext" aria-label="Siguiente">›</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="container main">
+    <!-- DESTACADOS -->
+    <section id="destacados" class="panel" aria-label="Coches destacados">
+      <div class="panel__head">
+        <h2>Destacados</h2>
+        <div class="panel__meta">
+          <span class="muted">Desliza →</span>
+        </div>
+      </div>
+
+      <div class="featured">
+        <button class="featured__btn" id="featPrev" aria-label="Anterior">‹</button>
+        <div class="featured__track" id="featuredTrack" aria-label="Carrusel de destacados"></div>
+        <button class="featured__btn" id="featNext" aria-label="Siguiente">›</button>
+      </div>
+    </section>
+
+    <!-- COCHES DISPONIBLES (MISMO FORMATO VERTICAL) -->
+    <section id="coches" class="panel" aria-label="Coches disponibles">
+      <div class="panel__head">
+        <h2>Coches disponibles</h2>
+        <div class="panel__meta">
+          <span class="muted"><span id="resultsCount">0</span> coches</span>
+        </div>
+      </div>
+
+      <div id="carsGrid" class="vcards"></div>
+
+      <div id="emptyState" class="empty hidden">
+        <h3>No hay coches aún</h3>
+        <p>Agrega coches en <code>script.js</code> dentro de <code>CARS</code>.</p>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="panel contact" aria-label="Contacto">
+      <h2>Contacto</h2>
+      <p>Escríbenos por WhatsApp o email:</p>
+
+      <div class="contact__row">
+        <a class="btn" id="whatsGeneral" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn--ghost" href="https://mail.google.com/mail/?view=cm&fs=1&to=davidbejarbravo31@gmail.com&su=Consulta%20desde%20la%20web&body=Hola%2C%20vengo%20desde%20la%20web%20y%20me%20gustaría%20recibir%20más%20información."
+   target="_blank" rel="noopener">
+  Email</a>
+      </div>
+
+      
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="yearNow"></span> Automoviles B.J</span>
+      <span class="muted"></span>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
