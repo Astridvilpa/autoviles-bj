@@ -106,27 +106,31 @@ a {
   overflow: hidden;
   border-bottom: 1px solid var(--line);
 }
-.hero__bg{
-  position:absolute;
-  inset:0;
+.hero__bg {
+  position: absolute;
+  inset: 0;
 
-  background-size: cover;   /* 👈 ancho fijo, alto automático */
-  background-position: center ;
+  background-size: cover; /* 👈 ancho fijo, alto automático */
+  background-position: center;
   background-repeat: no-repeat;
 
-  background-color: rgba(5,10,18,.85);
+  background-color: rgba(5, 10, 18, 0.85);
 
-  transform: 1.06;
+  transform: scale(1.06);
   filter: saturate(1.05) contrast(1.03);
 }
-.hero[data-hero-fit="contain"] .hero__bg{
+.hero[data-hero-fit="contain"] .hero__bg {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: none;                 /* <- quita el zoom */
-  background-color: rgba(0,0,0,.35); /* <- para que no quede feo si sobran bordes */
+  transform: none; /* <- quita el zoom */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.35
+  ); /* <- para que no quede feo si sobran bordes */
 }
-
 
 .hero__overlay {
   position: absolute;
@@ -293,9 +297,12 @@ a {
   .vcards {
     grid-template-columns: 1fr;
   }
-  @media (min-width: 1200px){
-  .vcards{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+
+@media (min-width: 1200px) {
+  .vcards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 /* CARD VERTICAL (la misma para destacados y disponibles) */
@@ -505,4 +512,92 @@ a {
 }
 code {
   color: #cfe6ff;
+}
+
+/* =========================================================
+   MOVIL / TABLET: menú visible y destacados 1 tarjeta
+========================================================= */
+
+/* evita scroll horizontal feo en móvil */
+html, body {
+  overflow-x: hidden;
+}
+
+/* ===== HEADER móvil: NO se pierde el menú ===== */
+@media (max-width: 620px){
+  .topbar__inner{
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .brand{
+    min-width: 220px; /* evita que el logo+texto se aplasten */
+  }
+
+  .brand__name{
+    font-size: 15px;
+    line-height: 1.1;
+  }
+
+  .brand__tag{
+    font-size: 11px;
+    opacity: .85;
+  }
+
+  /* menú visible, si no cabe se desliza */
+  .nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+  }
+
+  .nav a{
+    white-space: nowrap;
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .nav::-webkit-scrollbar{ height: 0; }
+}
+
+/* ===== DESTACADOS móvil: 1 tarjeta grande y se mueve con flechas ===== */
+@media (max-width: 620px){
+  .featured{
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+  }
+
+  .featured__track{
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 2px;
+  }
+
+  /* Solo 1 tarjeta visible grande */
+  #featuredTrack .vcard{
+    flex: 0 0 auto;
+    width: 84vw;
+    max-width: 380px;
+    scroll-snap-align: center;
+  }
+
+  #featuredTrack .vcard__media{
+    height: 200px;
+  }
+
+  .featured__track::-webkit-scrollbar{ height: 0; }
+}
+
+/* ===== TABLET: 2 columnas de coches disponibles ===== */
+@media (min-width: 621px) and (max-width: 980px){
+  .vcards{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
