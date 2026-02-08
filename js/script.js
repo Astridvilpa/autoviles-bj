@@ -135,6 +135,11 @@ function escapeHtml(str) {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
+function buildMailto(to, subject, body) {
+  const s = encodeURIComponent(subject || "");
+  const b = encodeURIComponent(body || "");
+  return `mailto:${to}?subject=${s}&body=${b}`;
+}
 
 /* HERO CARRUSEL */
 let heroIndex = 0;
@@ -369,6 +374,19 @@ function renderCars() {
 function init() {
   qs("#yearNow").textContent = String(new Date().getFullYear());
   qs("#whatsGeneral").setAttribute("href", whatsappLink());
+
+  // EMAIL (funciona en móvil, tablet y ordenador)
+  const emailBtn = qs("#emailBtn");
+  if (emailBtn) {
+    const emailTo = "davidbejarbravo31@gmail.com"; // <-- CAMBIA AQUÍ
+    const subject = "Consulta desde Automoviles B.J";
+    const body =
+      "Hola,\n\n" +
+      "Vengo desde la web de Automoviles B.J. y me gustaría recibir más información.\n\n" +
+      "Gracias.";
+
+    emailBtn.setAttribute("href", buildMailto(emailTo, subject, body));
+  }
 
   renderHero();
   qs("#heroPrev").addEventListener("click", () => {
