@@ -6,7 +6,7 @@
 
 /* CONFIGURACIÓN DEL NEGOCIO */
 const BUSINESS = {
-  whatsappNumber: "34+645723857", // <-- Cambia a tu número (España: 34 + tu número)
+  whatsappNumber: "34645723857", // <-- Cambia a tu número (España: 34 + tu número)
   businessName: "Automoviles B.J",
   defaultWhatsappMessage:
     "Hola, vengo desde tu web. ¿Podrías darme más información?",
